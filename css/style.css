@@ -50,9 +50,9 @@ a {color:#000;text-decoration:none;}
 /* header */
 .header{
     background: white;
-    height: 100px;
+    height: 80px;
     display: flex;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0px 6px rgb(190 190 190 / 15%);
 }
 .header > .inner{
 	display: flex;
@@ -100,11 +100,26 @@ a {color:#000;text-decoration:none;}
 }
 
 /* footer */
-.footer{
-
+.footer {
+    border-top: solid 1px #eee;
 }
 .footer > .inner{
 	display: flex;
 	align-items: center;
+	gap: 40px;
+	height: 80px;
 } 
-.ft_logo{}
+.ft_rt {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.ft_link{
+	display: flex;
+	gap: 10px;
+}
+
+/* content */
+.content{
+	min-height: calc(100vh - 160px);
+}
