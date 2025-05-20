@@ -16,9 +16,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 ul, dl,dt,dd {margin:0;padding:0;list-style:none}
 legend {position:absolute;margin:0;padding:0;font-size:0;line-height:0;text-indent:-9999em;overflow:hidden}
-label, input, button, select, img {vertical-align:middle;font-family:'Pretendard', sans-serif;font-size: .9rem;outline: 0;}
+label, input, button, select, img {vertical-align:middle;font-family:'Pretendard', sans-serif;font-size: .9rem;}
 input, button {margin:0;padding:0;}
 input[type="submit"] {cursor:pointer}
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+	-webkit-transition-delay: 9999s; 
+	transition-delay: 9999s;
+	background: transparent;
+} */
 button {cursor:pointer}
 
 textarea, select {font-family:'Pretendard', sans-serif;}
@@ -38,7 +46,6 @@ input:focus, input[type=checkbox]:focus, input[type=file]:focus, input[type=radi
 input:focus-within, input[type=checkbox]:focus-within, input[type=file]:focus-within, input[type=radio]:focus-within,
 input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-visible, input[type=radio]:focus-visible{
     outline: 0;
-	border : 0;
 }
 
 *, :after, :before {
@@ -50,6 +57,7 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 /*common*/
 :root{
 	--main: #2A9D8F;
+	--bg: #fffbee;
 }
 
 .stn{
@@ -59,14 +67,21 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 	box-shadow: none;
 }
 
+.c_red{
+	color: red;
+}
 .c_main{
 	color: var(--main);
 }
-
 .inner{
 	width: 1200px;
 	max-width: 100%;
 	margin: 0 auto;
+	background: #fff;
+}
+
+.inner_500{
+	width: 500px;
 }
 
 .g-icon, .material-symbols-rounded{
@@ -88,25 +103,30 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 	background: #d0d0d0;
 }
 .ipt_tt{
-	outline: 0;
-	padding: 6px;
-	font-size: 1rem;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border: solid 1px gray;
+    border-radius: 4px;
 }
 .ipt_sbm, .bttn_sbm{
-	background: var(--main) !important;
+	background: var(--main);
 	color: white;
     border: none;
     padding: 4px 12px;
     border-radius: 2px;	
 }
-.ipt_sbm:focus, .ipt_sbm:focus-within, .ipt_sbm:focus-visible, .ipt_sbm:hover,
-.bttn_sbm:focus, .bttn_sbm:focus-within, .bttn_sbm:focus-visible, .bttn_sbm:hover{
-	color: white;
+.bttn_sbm2{
+    font-size: 1rem;
+    background: var(--main);
+    color: white;
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 20px;
 }
 .sel{
 	appearance: none;
 	padding: 6px 24px 6px 6px;
-	background: url(/img/select_tri.png) no-repeat 95% center;
+	background: url(/resources/images/select_tri.png) no-repeat 95% center;
 	outline: 0;
 }
 .txtarea{
@@ -137,12 +157,28 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 
 /* header */
 .header{
-	position: relative;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
     background: white;
     height: 80px;
     display: flex;
     box-shadow: 0 0px 6px rgb(190 190 190 / 15%);
 	z-index: 999;
+	transition: .3s ease-out;
+}
+.header.scrl{
+	height: 70px;
+}
+.header .logo{
+	transition: .2s;
+}
+.header.scrl .logo{
+	transform: scale(0.95);
+}
+.header.scrl .depth{
+	font-size: 1.125rem;
 }
 .header > .inner{
 	display: flex;
@@ -154,6 +190,7 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 	align-items: center;
 	height: 100%;
 	font-size: 1.2rem;
+	transition: .2s;
 }
 .depth > li{
 	display: flex;
@@ -177,7 +214,6 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 	background: #fff;
 	font-size: 90%;
 	text-align: center;
-	padding-top: 4px;
 	transform: scaleY(0);
 	transform-origin: top;
 	box-shadow: 0 2px 4px rgba(95,95,95,0.2);
@@ -231,12 +267,17 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 	gap: 10px;
 }
 
-/* content */
+/* 서브페이지 공통 */
 .content{
 	min-height: calc(100vh - 160px);
+	margin-top: 80px;
 }
-
-/* 서브페이지 공통 */
+.content > .inner{
+	padding: 60px 0;
+}
+.content > .inner > *{
+	margin-bottom: 30px;
+}
 .page_top{
 	display: flex;
 	align-items: center;
@@ -248,12 +289,9 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 	font-size: 100%;
 	font-weight: 600;
 }
-
-.content > .inner{
-	padding: 20px 0 60px;
-}
-.content > .inner > *{
-	margin-bottom: 30px;
+.page_name2{
+	font-size: 1.4rem;
+	text-align: center;
 }
 
 .pg_wrap{
@@ -492,4 +530,104 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 .search_form .ipt_tt{
 	width: 240px;
 	max-width: 100%;
+}
+
+/* 회원가입, 로그인 등 */
+.form_ul{
+	width: 100%;
+	margin: 0 auto;
+}
+.form_ul > li{
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin-bottom: 12px;
+}
+.form_ul .s_info{
+	margin-top: 10px;
+}
+.form_ul .form_label{
+	white-space: nowrap;
+	font-size: .85rem;
+    color: gray;
+}
+.form_ul .ipt_tt{
+	width: 100%;
+}
+.join > .inner_500{
+	max-width: 400px;
+}
+.join .profile .form_label{
+	margin-bottom: 10px;
+}
+.join .filebox{
+    max-width: 100%;
+    width: 150px;
+	aspect-ratio: 1;
+    margin: 0 auto;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(95, 95, 95, 0.4);
+	overflow: hidden;
+}
+.join .filebox .label_hidden{
+	cursor: pointer;
+	border-radius: 50%;
+}
+.join .filebox .upload-display{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+.join .filebox .upload-display img{
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+/* 파일 업로드 부분 */
+.filebox{
+	position: relative;
+}
+.label_hidden{
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.filebox input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip:rect(0,0,0,0);
+	border: 0;
+}  
+/* named upload */
+.filebox .upload-name {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
+/* imaged preview */
+.filebox .upload-display {
+	margin-bottom: 5px;
+	width: 100%;
+}
+.filebox .upload-display img{
+	max-width: 100%;
+	max-height: 100%;
 }

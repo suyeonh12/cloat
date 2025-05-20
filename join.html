@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CLOAT, 이미지 클로킹 서비스</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body id="cloat">
+	<div id="header"></div>
+	<!-- header 끝 -->
+
+	<section class="content join">
+		<div class="inner inner_500">
+			<h2 class="page_name2">회원가입</h2>
+			<form action="" method="post">
+				<ul class="form_ul">
+					<li>
+						<small class="s_info c_red">* 필수입력</small>
+						<input type="hidden" name="user_type" value="2" placeholder="">
+						<span class="form_label">ID</span>
+						<input id="inputid" type="text" name="id" placeholder="ID를 입력하세요" class="ipt_tt" required>
+						<span id="idCheckMsg"></span>
+					</li>
+					<li>
+						<span class="form_label">PW</span>
+						<input type="password" name="pw" placeholder="PW를 입력하세요" class="ipt_tt" required>
+					</li>
+					<li>
+						<span class="form_label">이름</span>
+						<input type="text" name="name" placeholder="이름을 입력하세요" class="ipt_tt" required>
+					</li>
+					<li>
+						<small class="s_info c_main">* 선택사항</small>
+						<span class="form_label">이메일</span>
+						<input type="text" name="email" placeholder="이메일을 입력하세요" class="ipt_tt">
+					</li>
+					<li>
+						<span class="form_label">연락처</span>
+						<input type="text" name="phone" placeholder="전화번호를 입력하세요" class="ipt_tt">
+					</li>
+					<li class="profile">
+						<span class="form_label">프로필 이미지 등록</span>
+						<div class="filebox preview-image">
+							<label for="profile_img" class="label_hidden"></label>
+							<div class="upload-display">
+								<img src="resources/images/user.png" alt="">
+							</div>
+							<input class="upload-name" value="파일선택" disabled="disabled" style="width: 200px;">
+							<input type="file" id="profile_img" class="upload-hidden">
+						</div>						
+					</li>	
+					<li>
+						<input type="submit" value="회원가입" class="bttn bttn_sbm2">
+					</li>	
+				</ul>	
+			</form>		
+		</div>
+	</section>
+
+	<!-- footer-->
+	<div id="footer"></div>
+
+	<script>
+		// 사진 업로드 스크립트
+		$(document).ready(function(){
+			var fileTarget = $('.filebox .upload-hidden');
+
+			fileTarget.on('change', function(){
+				if(window.FileReader){
+					// 파일명 추출
+					var filename = $(this)[0].files[0].name;
+				} 
+
+				else {
+					// Old IE 파일명 추출
+					var filename = $(this).val().split('/').pop().split('\\').pop();
+				};
+
+				$(this).siblings('.upload-name').val(filename);
+			});
+
+			// 이미지 미리보기
+			var imgTarget = $('.preview-image .upload-hidden');
+
+			imgTarget.on('change', function () {
+				var parent = $(this).parent();
+				var uploadDisplay = parent.find('.upload-display');
+
+				// upload-display 내부에 upload-thumb 이미지 요소가 있는지 확인
+				var imgTag = uploadDisplay.find('.upload-thumb');
+
+				if (window.FileReader) {
+					// image 파일만 처리
+					if (!$(this)[0].files[0].type.match(/image\//)) return;
+
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						var src = e.target.result;
+						
+						if (imgTag.length > 0) {
+							// 이미지 태그가 있으면 src만 교체
+							imgTag.attr('src', src);
+						} else {
+							// 없으면 새로 추가
+							uploadDisplay.html('<div class="upload-thumb-wrap"><img src="' + src + '" class="upload-thumb"></div>');
+						}
+					}
+					reader.readAsDataURL($(this)[0].files[0]);
+				} else {
+					// 구형 IE 대응 (FileReader 없는 경우)
+					$(this)[0].select();
+					$(this)[0].blur();
+					var imgSrc = document.selection.createRange().text;
+
+					if (imgTag.length > 0) {
+						imgTag[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\"" + imgSrc + "\")";
+					} else {
+						uploadDisplay.html('<div class="upload-thumb-wrap"><img class="upload-thumb"></div>');
+						uploadDisplay.find('.upload-thumb')[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\"" + imgSrc + "\")";
+					}
+				}
+			});
+		});	
+
+		function loadHTML(id, url) {
+			fetch(url)
+				.then(res => res.text())
+				.then(data => {
+					document.getElementById(id).innerHTML = data;
+				});
+		}
+
+		loadHTML("header", "header.html");
+		loadHTML("footer", "footer.html");
+
+		function pageTop(){
+			$('html, body').animate({scrollTop: '0'}, 600);
+		}
+
+		$(window).on('scroll load', function () {
+			if ($(window).scrollTop() > 5) {
+				$('.header').addClass('scrl');
+			} else {
+				$('.header').removeClass('scrl');
+			}
+		});
+		
+	</script>
+</body>
+
+</html>
