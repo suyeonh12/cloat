@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CLOAT, 이미지 클로킹 서비스</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body id="cloat">
+	<div id="header"></div>
+	<!-- header 끝 -->
+
+	<!-- 여기부터 가져가세요 --> 
+	<section class="content board list">
+		<div class="page_top">
+			<div class="inner">
+				<h2 id="pageName"></h2>
+			</div>
+			<script>
+				// URL에서 파라미터 값 가져오기
+				const urlParams = new URLSearchParams(window.location.search);
+				let pageName = urlParams.get('pageName');
+				switch(pageName){
+					case "notice": 
+						pageName = '공지사항';
+					break;
+					case "qna": 
+						pageName = '고객문의';
+					break;
+					case "review": 
+						pageName = '고객후기';
+					break;
+					case "news": 
+						pageName = '뉴스';
+					break;															
+				}
+				$("#pageName").text(pageName);
+			</script>
+		</div>			
+		<div class="inner">
+			<table class="tb">
+				<colgroup>
+					<col width="5%">
+					<col width="60%">
+					<col width="10%">
+					<col width="10%">
+					<col width="5%">
+				</colgroup>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>작성일</th>
+					<th>조회수</th>
+				</tr>
+				<!-- 게시판 테이블에 있는 내용 불러오기 / 한 목록에 10개씩, 최신순 -->
+				<tr>
+					<td class="">3</td>
+					<td class="tb_title">
+						<a href="boardView.html">제목입니다</a>
+					</td>
+					<td>관리자</td>
+					<td>2025.05.19</td>
+					<td>5</td>
+				</tr>	
+				<tr>
+					<td class="">2</td>
+					<td class="tb_title">
+						<a href="boardView.html">제목입니다</a>
+					</td>
+					<td>관리자</td>
+					<td>2025.05.19</td>
+					<td>5</td>
+				</tr>	
+				<tr>
+					<td class="">1</td>
+					<td class="tb_title">
+						<a href="boardView.html">제목입니다</a>
+					</td>
+					<td>관리자</td>
+					<td>2025.05.19</td>
+					<td>5</td>
+				</tr>									
+			</table>
+			<div class="bttn_wrap">
+				<!-- 회원 아닌 사람 클릭하면 '로그인해주세요' alert -->
+				<button onClick="writeBtn()" class="bttn ipt_sbm">글쓰기</button>
+			</div>
+			<script>
+				let writeBtn = () => {
+					// 로그인 상태 아니면
+					//alert('로그인해주세요');
+					// 로그인 상태면
+					// -> 아이디 정보 가지고 글쓰기 페이지로 이동
+					window.location.href = "boardWrite.html?pageName="+pageName;
+				}
+			</script>
+
+			<!-- 페이징 -->
+			<div class="pg_wrap">
+				<a href=""><img src="./img/p_prev.png" alt=""></a>
+				<a href="">1</a>
+				<a href="">2</a>
+				<a href="">3</a>
+				<a href="">4</a>
+				<a href="">5</a>
+				<a href=""><img src="./img/p_next.png" alt=""></a>
+			</div>
+
+			<!-- 검색창 -->
+			<div class="search_form">
+				<form>
+					<select class="sel">
+						<option name="">내용+댓글</option>
+						<option name="">내용</option>
+						<option name="">제목</option>
+						<option name="">작성자</option>
+					</select>
+					<input class="ipt_tt" type="text" name="" placeholder="검색어 입력">
+					<input class="ipt_sbm" type="submit" value="검색">
+				</form>
+			</div>
+			
+		</div>	
+	</section>
+	<!-- 여기까지 가져가세요 -->
+
+	<!-- footer-->
+	<div id="footer"></div>
+
+	<script>
+		function loadHTML(id, url) {
+			fetch(url)
+				.then(res => res.text())
+				.then(data => {
+					document.getElementById(id).innerHTML = data;
+				});
+		}
+
+		loadHTML("header", "header.html");
+		loadHTML("footer", "footer.html");
+	</script>
+</body>
+
+</html>
