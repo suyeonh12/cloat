@@ -254,7 +254,7 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 .content_desc a {color:#333;}
 
 .agree_box.on .view_term img{
-	transform: rotate(0deg);
+	transform: rotate(270deg);
 }
 .agree_box.on .agree_txt{
     height: 0;	
@@ -904,13 +904,18 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 	justify-content: center;
 }
 .mp_cont.edit .form_ul{
-	display: flex;
-	flex-wrap: wrap;
-	gap: 12px;
 	margin-top: 10px;
 }
-.mp_cont.edit .form_ul > li{
-	width: calc(33.33% - 8px);
+.mp_cont.edit .form_ul > li > .d_flex{
+	display: flex;
+	flex-wrap: wrap;
+    gap: 8px;
+}
+.mp_cont.edit .form_ul > li > .d_flex > li {
+    width: calc(50% - 4px);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 .mp_cont.edit .profile .filebox{
 	margin: 0;

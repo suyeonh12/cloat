@@ -20,48 +20,21 @@
 <body id="cloat">
 	<div id="header"></div>
 	<!-- header 끝 -->
-	<section class="content">
-		<div class="inner">
-			<h2 class="page_name2">마이페이지</h2>		
-			<div class="mypage">
-				<div class="mp_nav">
-					<div class="mp_profile">
-						<div class="thumb">
-							<img src="resources\images\user.png" alt="">
-						</div>
-						<ul class="txt">
-							<!-- 이름 -->
-							<p>홍길동</p>
-							<!-- 아이디 -->
-							<small>test1234</small>
-						</ul>
-					</div>
-					<ul class="mp_menu">
-						<li>
-							<a href="my_gallery.html" class="c_main">내 갤러리</a>
-						</li>					
-						<li>
-							<a href="my_review.html">내 후기글</a>					
-						</li>
-						<li>
-							<a href="my_qna.html">내 문의글</a>					
-						</li>						
-						<li>
-							<a href="mb_check.html">내 정보수정</a>
-						</li>
-					</ul>
-				</div>
-				<!-- 마이페이지는 이 부분만 바뀝니다! -->
-				<div class="mp_cont">
-					<!-- if : 내 갤러리 -->
-					<!-- 클로킹한 이미지가 하나도 없다면 -->
-					<div class="no_content">
-						<p>아직 클로킹한 이미지가 없습니다.</p>
-					</div>
-					<!-- 클로킹한 이미지가 있다면 -->
-				</div>
 
-			</div>			
+	<section class="content join">
+		<div class="inner inner_500">
+			<h2 class="page_name2">비밀번호 확인</h2>
+			<form action="" method="post">
+				<ul class="form_ul">
+					<li>
+						<span class="form_label">PW</span>
+						<input type="password" name="pw" placeholder="비밀번호를 입력하세요" class="ipt_tt" required>
+					</li>
+					<li>
+						<input type="submit" value="회원가입" class="bttn bttn_sbm2">
+					</li>	
+				</ul>	
+			</form>		
 		</div>
 	</section>
 
@@ -69,6 +42,7 @@
 	<div id="footer"></div>
 
 	<script>
+
 		function loadHTML(id, url) {
 			fetch(url)
 				.then(res => res.text())
@@ -83,8 +57,16 @@
 		function pageTop(){
 			$('html, body').animate({scrollTop: '0'}, 600);
 		}
+
+		$(window).on('scroll load', function () {
+			if ($(window).scrollTop() > 5) {
+				$('.header').addClass('scrl');
+			} else {
+				$('.header').removeClass('scrl');
+			}
+		});
+		
 	</script>
 </body>
 
 </html>
-
