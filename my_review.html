@@ -47,13 +47,86 @@
 							<a href="my_qna.html">내 문의글</a>					
 						</li>						
 						<li>
-							<a href="my_edit.html">내 정보수정</a>
+							<a href="mb_check.html">내 정보수정</a>
 						</li>
 					</ul>
 				</div>
 				<!-- 마이페이지는 이 부분만 내용이 변경됩니다! -->
 				<div class="mp_cont">
-					<!-- 내 후기글 : tb_review 테이블에서 id가 로그인한 id와 같은 글 최신순으로 출력 -->
+
+					<!-- 내 후기글 : tb_review 테이블에서 id가 로그인한 id와 같은 글 최신순으로 출력 // Qna.jsp 로직 참고하세요-->
+					<div class="mp_tit">내 후기글</div>
+
+					<div class="my_board">
+						<table class="tb">
+							<colgroup>
+								<col width="5%">
+								<col width="60%">
+								<col width="10%">
+								<col width="10%">
+								<col width="5%">
+							</colgroup>
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
+								<th>조회수</th>
+							</tr>
+							<!-- 게시판 테이블에 있는 내용 불러오기 / 한 목록에 10개씩, 최신순 -->
+							<tr>
+								<td class="">3</td>
+								<td class="tb_title">
+									<a href="boardView.html">후기글 제목입니다 <span>답변 1</span></a>
+								</td>
+								<td>내 아이디</td>
+								<td>2025.05.19</td>
+								<td>5</td>
+							</tr>	
+							<tr>
+								<td class="">2</td>
+								<td class="tb_title">
+									<a href="boardView.html">후기글 제목입니다 <span>답변 1</span></a>
+								</td>
+								<td>내 아이디</td>
+								<td>2025.05.19</td>
+								<td>5</td>
+							</tr>	
+							<tr>
+								<td class="">1</td>
+								<td class="tb_title">
+									<a href="boardView.html">후기글 제목입니다 <span>답변 1</span></a>
+								</td>
+								<td>내 아이디</td>
+								<td>2025.05.19</td>
+								<td>5</td>
+							</tr>									
+						</table>
+						<!-- 페이징 -->
+						<div class="pg_wrap">
+							<a href=""><img src="resources/images/p_prev.png" alt=""></a>
+							<a href="">1</a>
+							<a href="">2</a>
+							<a href="">3</a>
+							<a href="">4</a>
+							<a href="">5</a>
+							<a href=""><img src="resources/images/p_next.png" alt=""></a>
+						</div>
+
+						<!-- 검색창 -->
+						<div class="search_form">
+							<form>
+								<select class="sel">
+									<option name="">제목+내용</option>
+									<option name="">제목</option>
+									<option name="">내용</option>
+								</select>
+								<input class="ipt_tt" type="text" name="" placeholder="검색어 입력">
+								<input class="ipt_sbm" type="submit" value="검색">
+							</form>
+						</div>
+					</div>	
+				
 				</div>
 
 			</div>			
