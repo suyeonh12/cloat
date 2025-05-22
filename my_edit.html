@@ -15,7 +15,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>	 
 	<!-- summernote 에디터 cdn, css 충돌 위험 가능하면 에디터 사용 페이지에서만 추가되도록-->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css\style.css">
 </head>
 <body id="cloat">
 	<div id="header"></div>
@@ -47,7 +47,7 @@
 							<a href="my_qna.html">내 문의글</a>					
 						</li>						
 						<li>
-							<a href="my_edit.html" class="c_main">내 정보수정</a>
+							<a href="mb_check.html" class="c_main">내 정보수정</a>
 						</li>
 					</ul>
 				</div>
@@ -59,18 +59,28 @@
 						<ul class="form_ul">
 							<li>
 								<span class="form_label">아이디</span>
-								<input type="text" name="id" value="tb_user의 id 출력, 수정X" class="ipt_tt" disabled>
+								<input type="text" name="id" value="tb_user의 id 출력, 수정X" placeholder="이름을 입력하세요" class="ipt_tt" disabled>
 							</li>
 							<li>
 								<ul class="d_flex">
 									<li>
 										<span class="form_label">비밀번호</span>
-										<input id="inputPw" type="password" name="pw" placeholder="영문/숫자/특수문자 조합 8자 이상" class="ipt_tt" required>
+										<div class="po_rel">
+											<input id="inputPw" type="password" name="pw" placeholder="영문/숫자/특수문자 조합 8자 이상" class="ipt_tt" required>
+											<div class="po_ab" onClick="pkView(this)">
+												<img src="resources/images/visibility_off.svg" alt="">
+											</div>
+										</div>
 										<small id="pwCheckMsg"></small>										
 									</li>
 									<li>
 										<span class="form_label">비밀번호 확인</span>
-										<input id="inputPwChk" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요" class="ipt_tt">
+										<div class="po_rel">
+											<input id="inputPwChk" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요" class="ipt_tt">
+											<div class="po_ab" onClick="pkView(this)">
+												<img src="resources/images/visibility_off.svg" alt="">
+											</div>											
+										</div>
 										<small id="pwMatchMsg"></small>
 									</li>									
 								</ul>
@@ -104,11 +114,12 @@
 					</form>		
 					<div class="bttn_wrap">
 						<a href="javascript:history.back();" class="bttn bttn_cancle">취소</a>
-						<input type="submit" value="정보수정완료" class="bttn bttn_sbm2">
+						<input type="submit" value="회원정보수정" class="bttn bttn_sbm2">
 					</div>	
 					<div class="tar">
 						<a href="javascript:mbOut('id')" class="mb_out">회원탈퇴</a>
-					</div>									
+					</div>	
+
 					<!-- 정보수정에 필요한 스크립트 -->
 					<script>
 					function mbOut(id){
@@ -254,6 +265,7 @@
 	<!-- footer-->
 	<div id="footer"></div>
 
+	<script src="js/common.js"></script>
 	<script>
 		function loadHTML(id, url) {
 			fetch(url)

@@ -119,7 +119,7 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 .sel{
 	appearance: none;
 	padding: 6px 24px 6px 6px;
-	background: url('/resources/images/select_tri.png') no-repeat 95% center;
+	background: url('resources\images\select_tri.png') no-repeat 95% center;
 	outline: 0;
 }
 .txtarea{
@@ -185,7 +185,7 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
     left: 0;
     opacity: 0;
     transition: all .2s;
-    background-image: url('/resources/images/check_wh.svg');
+    background-image: url('resources\images\check_wh.svg');
     background-size: contain;
     width: 100%;
     height: 100%;
@@ -753,6 +753,23 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 .form_ul .ipt_tt{
 	width: 100%;
 }
+.po_rel{
+	position: relative;
+}
+.po_ab{
+	position: absolute;
+}
+.join input[name="id"]{
+	padding-right: 90px;
+}
+.join .bttn.po_ab{
+	position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    right: 10px;
+    border-radius: 16px;
+    font-size: 90%;
+}
 .join .profile .form_label{
 	margin-bottom: 10px;
 }
@@ -916,6 +933,18 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
     display: flex;
     flex-direction: column;
     gap: 6px;
+}
+.mp_cont.edit .form_ul .po_rel > input{
+	padding-right: 40px;
+}
+.mp_cont.edit .form_ul .po_ab{
+	top: 50%;
+	transform: translateY(-50%);
+	right: 10px;
+	cursor: pointer;
+}
+.mp_cont.edit .form_ul .po_ab img{
+	width: 28px;
 }
 .mp_cont.edit .profile .filebox{
 	margin: 0;
