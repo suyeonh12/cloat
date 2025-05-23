@@ -66,12 +66,12 @@
 									<div class="mb_img"><img src="resources/images/logo.svg" alt=""></div>
 									<div class="mb_id">관리자</div>
 								</div>
-								<!-- 댓글 쓴 본인만 보이게 -->
+								<!-- 관리자만 보이게 -->
 								<div class="cmt_BtnWrap">
 									<button class="cmt_toggle stn" onClick="popCmtBtn(this)"><img src="resources/images/more_vert.png" alt=""></button>
 									<div class="cmt_Btn">
-										<a href="">수정</a>
-										<a href="">삭제</a>
+										<a href="">수정</a> <!-- 누르면 댓글창 태그 div => textarea -->
+										<a href="">삭제</a> <!-- 댓글 삭제 -->
 									</div>
 								</div>
 								<script>
@@ -81,25 +81,21 @@
 								</script>
 							</div>
 							<div class="cmt_btm">
-								<p class="cmt_cont">안녕하세요 CLOAT에 관심 가져주셔서 감사합니다 어쩌구저쩌구</p>
-								<!-- 처음에 날짜/시간 작성됨 -> 수정되면 날짜/시간 수정됨으로 변경?? 얘기해보기! -->
+								<!-- 입력내용 있으면 태그 div,모두에게 노출 //
+								 	 입력내용 없으면 태그 textarea, admin만 보임 -->
+								<textarea class="txtarea" name="" id="" placeholder="답변 내용을 입력하세요">${관리자가 입력한 내용 노출}</textarea>
+								<!-- 관리자만 보이게 -->
 								<div class="cmt_time">2025.05.20 14:54:58 수정됨</div>
+								<div class="cmt_bttn bttn_wrap">
+									<button class="bttn bttn_sbm">입력</button>
+								</div>			
+								<!-- 처음에 날짜/시간 작성됨 -> 수정되면 날짜/시간 수정됨으로 변경?? 얘기해보기! -->
+								
 							</div>
 
 						</div>
 					</li>
 				</ul>
-				<!-- 댓글 입력창 / 권한에 따라 현재는 관리자만 보이게 ? -->
-				<div class="cmt_write">
-					<div class="cmt_mb">
-						<div class="mb_img"><img src="resources/images/logo.svg" alt=""></div>
-						<div class="mb_id">내 아이디 출력</div>
-					</div>
-					<textarea class="txtarea" name="" id="" placeholder="답변 내용을 입력하세요"></textarea>
-					<div class="cmt_bttn bttn_wrap">
-						<button class="bttn bttn_sbm">입력</button>
-					</div>					
-				</div>
 			</div>
 			
 			<!-- 버튼목록 -->

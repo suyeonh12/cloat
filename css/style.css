@@ -653,6 +653,7 @@ input:focus-visible, input[type=checkbox]:focus-visible, input[type=file]:focus-
 }
 .cmt_box .cmt_bttn{
 	justify-content: flex-end;
+	margin-top: 10px;
 }
 .cmt_box .cmt_bttn .bttn{
 	font-size: .8rem;
